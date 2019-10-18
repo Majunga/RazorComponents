@@ -1,0 +1,16 @@
+trigger:
+- master
+
+pool:
+  name: 'Default'
+
+variables:
+  imageName: 'RazorComponents.RazorModal'
+  version: '1.0.0.$(build.buildId)'
+  dockerfile: '$(system.defaultWorkingDirectory)Dockerfile'
+  tag: '$(registryServerName)/$(imageName):$(build.buildId)'
+  taglatest: '$(registryServerName)/$(imageName):latest'
+
+steps:
+- powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-args=Version=$(version) --build-args NUGET_KEY=$(nuget-key)
+  displayName: 'docker build'
