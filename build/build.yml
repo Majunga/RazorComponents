@@ -5,12 +5,14 @@ pool:
   name: 'Default'
 
 variables:
-  imageName: 'RazorComponents.RazorModal'
+  imageName: 'razorcomponents.razormodal'
   version: '1.0.$(build.buildId)'
-  dockerfile: '$(system.defaultWorkingDirectory)Dockerfile'
+  dockerfile: '$(system.defaultWorkingDirectory)/Dockerfile'
   tag: '$(registryServerName)/$(imageName):$(version)'
   taglatest: '$(registryServerName)/$(imageName):latest'
 
 steps:
-- powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-args=Version=$(version) --build-args NUGET_KEY=$(nuget-key)
+- powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-arg=Version=$(version) --build-arg NUGET_KEY=$(nuget-key)
   displayName: 'docker build'
+
+- powershell: docker run $(tag)
