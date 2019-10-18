@@ -23,19 +23,22 @@
     public void ToggleVisibility()
     {
         IsVisible = !IsVisible;
-
-
     }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
         ModalService.OnToggle += ToggleVisibility;
+
+        ModalService.OnShow += () => this.IsVisible = true;
+        ModalService.OnHide += () => this.IsVisible = false;
     }
 
     public void Dispose()
     {
         ModalService.OnToggle -= ToggleVisibility;
+        ModalService.OnShow -= () => this.IsVisible = true;
+        ModalService.OnHide -= () => this.IsVisible = false;
     }
 }
 

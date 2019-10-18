@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@inject Majunga.RazorModal.ModalService ModalService
+@inject IJSRuntime jsRuntime
+
+<h1>Hello, world!</h1>
+<h2 class="alert-success" style="display:@successmessage;">Saved</h2>
+<button class="btn btn-primary" @onclick="@ToggleModalVisibility">Create</button>
+
+<Modal Title="Test Modal" SaveHandler="@Save">
+    <EditForm Model="@model">
+        <input type="text" @bind="model.Name"/>
+    </EditForm>
+</Modal>
+
+@code {
+    ModelViewModel model = new ModelViewModel();
+    string successmessage = "none";
+    void Save()
+    {
+        System.Diagnostics.Debug.WriteLine("Saving");
+        successmessage = "block";
+        System.Diagnostics.Debug.WriteLine(successmessage);
+    }
+    void ToggleModalVisibility()
+    {
+        ModalService.ToggleVisibility();
+    }
+}

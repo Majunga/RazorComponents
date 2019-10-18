@@ -8,9 +8,22 @@ namespace Majunga.RazorModal
     {
         internal event Action OnToggle;
 
+        internal event Action OnShow;
+        internal event Action OnHide;
+
         public void ToggleVisibility()
         {
-            OnToggle?.Invoke();
+            this.OnToggle?.Invoke();
+        }
+
+        public void Show()
+        {
+            this.OnShow?.Invoke();
+        }
+
+        public void Hide()
+        {
+            this.OnHide?.Invoke();
         }
     }
 }
