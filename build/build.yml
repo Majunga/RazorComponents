@@ -7,7 +7,7 @@ pool:
 variables:
   imageName: 'razorcomponents.razormodal'
   version: '1.0.$(build.buildId)'
-  dockerfile: '$(system.defaultWorkingDirectory)Dockerfile'
+  dockerfile: '$(system.defaultWorkingDirectory)/Dockerfile'
   tag: '$(registryServerName)/$(imageName):$(version)'
   taglatest: '$(registryServerName)/$(imageName):latest'
 
