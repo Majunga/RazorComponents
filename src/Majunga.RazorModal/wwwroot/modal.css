@@ -1,0 +1,7 @@
+﻿.modal.fade {
+    opacity: 0;
+}
+
+.modal.fade.show {
+    opacity: 1;
+}

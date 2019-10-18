@@ -1,0 +1,60 @@
+﻿@using System
+@using Microsoft.AspNetCore.Components
+@implements IDisposable
+@inject ModalService ModalService
+
+
+@code
+{
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> SaveHandler { get; set; }
+
+    public bool IsVisible { get; set; }
+
+    string display => IsVisible ? "block" : "none";
+    string cssClass => IsVisible ? "fade show" : "fade";
+
+    public void ToggleVisibility()
+    {
+        IsVisible = !IsVisible;
+
+
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        ModalService.OnToggle += ToggleVisibility;
+    }
+
+    public void Dispose()
+    {
+        ModalService.OnToggle -= ToggleVisibility;
+    }
+}
+
+<div class="modal @cssClass" id="IngredientModal" tabindex="-1" role="dialog" style="display:@display" @onclick="@ToggleVisibility">
+    <div class="modal-dialog" role="document" @onclick="@ToggleVisibility">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="IngredientModalLabel">@Title</h5>
+                <button type="button" class="close" @onclick="@ToggleVisibility">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="@ToggleVisibility">Close</button>
+                <button type="button" class="btn btn-primary" @onclick="@SaveHandler">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
