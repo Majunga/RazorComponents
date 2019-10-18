@@ -1,9 +1,9 @@
 using System;
 using FluentAssertions;
-using Majunga.BlazorModal;
+using Majunga.RazorModal;
 using Xunit;
 
-namespace Unit.Majunga.BlazorModal.Tests
+namespace Unit.Majunga.RazorModal.Tests
 {
     public class ModalServiceTests
     {

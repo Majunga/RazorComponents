@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Majunga.BlazorModal
+namespace Majunga.RazorModal
 {
     public static class ServiceCollectionExtensions
     {

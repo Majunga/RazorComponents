@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("Unit.Majunga.BlazorModal.Tests")]
-namespace Majunga.BlazorModal
+[assembly:InternalsVisibleTo("Unit.Majunga.RazorModal.Tests")]
+namespace Majunga.RazorModal
 {
     public class ModalService
     {
