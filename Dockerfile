@@ -17,6 +17,6 @@ RUN dotnet pack ./src/Majunga.RazorModal/*.csproj /p:Version=$Version -c Release
 
 RUN dotnet test ./tests/Unit.Majunga.RazorModal.Tests/*.csproj
 
-ENTRYPOINT ["dotnet", "nuget", "push", "/sln/artifacts/*.nupkg"]
-CMD ["--source", $NUGET_URL]
-CMD ["--api-key", $NUGET_KEY]
+ENTRYPOINT ["dotnet", "nuget", "push", "/sln/artifacts/$Version.nupkg"]
+CMD ["--source", "$NUGET_URL"]
+CMD ["--api-key", "$NUGET_KEY"]
