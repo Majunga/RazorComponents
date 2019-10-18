@@ -14,3 +14,5 @@ variables:
 steps:
 - powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-arg=Version=$(version) --build-arg NUGET_KEY=$(nuget-key)
   displayName: 'docker build'
+
+- powershell: docker run $(tag)
