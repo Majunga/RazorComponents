@@ -12,5 +12,5 @@ variables:
   taglatest: '$(registryServerName)/$(imageName):latest'
 
 steps:
-- powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-args=Version=$(version) --build-args NUGET_KEY=$(nuget-key)
+- powershell: docker build -f $(dockerfile) -t $(tag) -t $(taglatest) $(system.defaultWorkingDirectory) --build-arg=Version=$(version) --build-arg NUGET_KEY=$(nuget-key)
   displayName: 'docker build'
