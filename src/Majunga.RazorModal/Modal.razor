@@ -42,8 +42,8 @@
     }
 }
 
-<div class="modal @cssClass" id="IngredientModal" tabindex="-1" role="dialog" style="display:@display" @onclick="@ToggleVisibility">
-    <div class="modal-dialog" role="document" @onclick="@ToggleVisibility">
+<div class="modal @cssClass" id="IngredientModal" tabindex="-1" role="dialog" style="display:@display">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="IngredientModalLabel">@Title</h5>
@@ -55,8 +55,8 @@
                 @ChildContent
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @onclick="@ToggleVisibility">Close</button>
-                <button type="button" class="btn btn-primary" @onclick="@SaveHandler">Save</button>
+                <button type="button" data-role="close-modal"  class="btn btn-secondary" @onclick="@ModalService.Hide">Close</button>
+                <button type="submit" data-role="submit-modal" class="btn btn-primary"        >Save</button>
             </div>
         </div>
     </div>
