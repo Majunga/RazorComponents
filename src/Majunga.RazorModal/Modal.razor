@@ -1,48 +1,6 @@
-﻿@using System
-@using Microsoft.AspNetCore.Components
-@implements IDisposable
-@inject ModalService ModalService
+﻿@inherits ModalBase
 
-
-@code
-{
-    [Parameter]
-    public string Title { get; set; }
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
-    public EventCallback<MouseEventArgs> SaveHandler { get; set; }
-
-    public bool IsVisible { get; set; }
-
-    string display => IsVisible ? "block" : "none";
-    string cssClass => IsVisible ? "fade show" : "fade";
-
-    public void ToggleVisibility()
-    {
-        IsVisible = !IsVisible;
-    }
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        ModalService.OnToggle += ToggleVisibility;
-
-        ModalService.OnShow += () => this.IsVisible = true;
-        ModalService.OnHide += () => this.IsVisible = false;
-    }
-
-    public void Dispose()
-    {
-        ModalService.OnToggle -= ToggleVisibility;
-        ModalService.OnShow -= () => this.IsVisible = true;
-        ModalService.OnHide -= () => this.IsVisible = false;
-    }
-}
-
-<div class="modal @cssClass" id="IngredientModal" tabindex="-1" role="dialog" style="display:@display">
+<div class="modal @CssClass" id="IngredientModal" tabindex="-1" role="dialog" style="display:@Display">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -4,12 +4,11 @@ using System.Runtime.CompilerServices;
 [assembly:InternalsVisibleTo("Unit.Majunga.RazorModal.Tests")]
 namespace Majunga.RazorModal
 {
-    public class ModalService
+    public class ModalService : IModalService
     {
-        internal event Action OnToggle;
-
-        internal event Action OnShow;
-        internal event Action OnHide;
+        public event Action OnToggle;
+        public event Action OnShow;
+        public event Action OnHide;
 
         public void ToggleVisibility()
         {
