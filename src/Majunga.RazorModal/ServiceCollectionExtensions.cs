@@ -6,7 +6,7 @@ namespace Majunga.RazorModal
     {
         public static IServiceCollection AddBlazorModal(this IServiceCollection services)
         {
-            return services.AddScoped<ModalService>();
+            return services.AddScoped<IModalService, ModalService>();
         }
     }
 }
